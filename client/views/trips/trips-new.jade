@@ -1,0 +1,16 @@
+h1 NEW TRIP
+
+h3 {{name | uppercase}}
+
+.row
+  .col-xs-4
+    form(name='tripForm', novalidate)
+      .form-group
+        label(for='name') Trip name
+        input.form-control#name(type='text', name='name', ng-model='trip.name')
+      .form-group
+        label(for='departure') Departure
+        input.form-control#password(type='date', name='departure', ng-model='trip.departure')
+      .form-group
+        button.btn.btn-default(type='submit', ng-click='create(trip)') Submit
+  .col-xs-8

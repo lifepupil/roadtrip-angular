@@ -1,10 +1,24 @@
 'use strict';
 
-angular.module('poseidon')
-.factory('User', function($rootScope){
+angular.module('ROADTRIP')
+.factory('User', function($rootScope, $http, nodeUrl){
 
-  function User(){
+  function User(obj){
+    this.email = obj.email;
+    this.avatar = obj.avatar;
   }
+
+  User.prototype.save = function() {
+    $http.put(nodeUrl + '/users', this);
+  };
+
+  User.findOrCreate = function() {
+    return $http.post(nodeUrl + '/users');
+  };
+
+  User.oauth = function(provider) {
+    return $rootScope.afAuth.$authWithOAuthPopup(provider);
+  };
 
   User.register = function(user){
     return $rootScope.afAuth.$createUser(user);

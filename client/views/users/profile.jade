@@ -1,0 +1,12 @@
+H1 PROFILE
+
+.row
+	.col-xs-4
+		form(name='userForm', novalidate)
+			label Email
+			input.form-control(type='email', ng-model='user.email')
+			label Avatar
+			input.form-control(type='url', ng-model='user.avatar')
+			button.brn-btn-success(type='submit', ng-click='update(user)') upadte
+		.col-xs-2
+			//- img.img
