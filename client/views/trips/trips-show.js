@@ -15,9 +15,10 @@ angular.module('roadtrip')
     console.log('remove stop', stop._id, ' trip ', $scope.trip);
     Trip.removeStop($scope.trip._id, stop._id)
     .then(function(reply) {
-      $window._.remove($scope.trip.stops, reply);
+      // console.log('inside removestop callback ', reply.data);
+      $window._.remove($scope.trip.stops, {_id: reply.data});
       addMarkers();
-    })
+    });
   };
 
 
